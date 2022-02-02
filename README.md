@@ -1,7 +1,6 @@
 - 👋 Hi, I’m @irfanshadikofficial
 - 👀 I’m interested in building new things.
 - 🌱 I’m currently learning Python.
-- 💞️ I’m looking to collaborate on ...
 - 📫 You can reach me on twitter : @irfanshadikoffi
 
 <!---

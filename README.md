@@ -62,6 +62,3 @@
 [jsplaylist]: https://www.youtube.com/c/zeitu
 [cssplaylist]: https://www.youtube.com/c/zeitu
 [reactplaylist]: https://www.youtube.com/c/zeitu
- <br>
- <p align="left"> <img src="https://komarev.com/ghpvc/?username=irfanshadikofficial" alt="irfanshadikofficial" /> </p>
- </br>

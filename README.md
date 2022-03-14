@@ -6,10 +6,10 @@
 
 ## I'm a Student, Developer, and a Dreamer!!
 
-- 🌱 I’m currently learning everything 🤣
-- 👯 I’m looking to collaborate with other content creators
-- 🥅 2022 Goals: Learn more about AI
-- ⚡ Fun fact: I love to watch anime
+- 🌱 I’m currently learning Data Structure.
+- 👯 I’m looking to collaborate with other Python programmers.
+- 🥅 2022 Goals: Learn more about Assembly Language & Web3.
+- ⚡ Fun fact: I love to watch Anime.
 
 ### Connect with me:
 

@@ -13,8 +13,8 @@
 
 ### Connect with me:
 
-[![website](./img/globe-light.svg)](https://irfanshadik.carrd.co#gh-light-mode-only)
-[![website](./img/globe-dark.svg)](https://irfanshadik.carrd.co#gh-dark-mode-only)
+[![website](./img/globe-light.svg)](https://irfanshadik.live#gh-light-mode-only)
+[![website](./img/globe-dark.svg)](https://irfanshadik.live#gh-dark-mode-only)
 &nbsp;&nbsp;
 [![website](./img/youtube-light.svg)](https://youtube.com/c/zeitu#gh-light-mode-only)
 [![website](./img/youtube-dark.svg)](https://youtube.com/c/zeitu#gh-dark-mode-only)

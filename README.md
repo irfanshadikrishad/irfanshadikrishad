@@ -30,6 +30,7 @@
 
 ### Languages and Tools:
 
+[<img align="left" alt="Bootstrap" width="26px" src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" />](https://www.youtube.com/c/zeitu)
 [<img align="left" alt="Visual Studio Code" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" style="padding-right:10px;" />][webdevplaylist]
 [<img align="left" alt="Photoshop" width="26px" src="./img/ps.svg" />](https://www.youtube.com/c/zeitu)
 [<img align="left" alt="Illustrator" width="26px" src="./img/ai.svg" />](https://www.youtube.com/c/zeitu)

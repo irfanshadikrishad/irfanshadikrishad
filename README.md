@@ -56,13 +56,14 @@
 
 </details>
 
+<details>
   <summery>:zap: Profile Views</summery>
-
   ![](https://komarev.com/ghpvc/?username=irfanshadikofficial&color=blueviolet&style=flat-square)
+  
+</details>
 
-
-[website]: https://irfanshadik.carrd.co
-[course]: http://irfanshadik.carrd.co
+[website]: https://irfanshadik.live
+[course]: http://irfanshadik.live
 [twitter]: https://twitter.com/irfanshadikoffi
 [youtube]: https://youtube.com/c/zeitu
 [instagram]: https://instagram.com/irfanshadikofficial

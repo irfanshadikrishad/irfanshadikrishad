@@ -36,6 +36,7 @@
 [<img align="left" alt="Filmora" width="26px" src="./img/filmora.svg" />](https://www.youtube.com/c/zeitu)
 [<img align="left" alt="HTML5" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" style="padding-right:10px;" />][webdevplaylist]
 [<img align="left" alt="CSS3" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" style="padding-right:10px;" />][cssplaylist]
+[<img align="left" alt="JS" width="26px" src="./img/js.svg" />](https://www.youtube.com/c/zeitu)
 [<img align="left" alt="Python" width="26px" src="./img/python.png" />](https://www.youtube.com/c/zeitu)
 [<img align="left" alt="C++" width="26px" src="./img/c++.png" />](https://www.youtube.com/c/zeitu)
 [<img align="left" alt="Bootstrap" width="26px" src="https://avatars.githubusercontent.com/u/2918581?s=200&v=4" />](https://www.youtube.com/c/zeitu)

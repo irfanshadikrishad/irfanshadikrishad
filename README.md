@@ -6,9 +6,9 @@
 
 ## I'm a Student, Developer, and a Dreamer!!
 
-- 🌱 I’m currently learning Data Structure.
-- 👯 I’m looking to collaborate with other Python programmers.
-- 🥅 2022 Goals: Learn more about Assembly Language & Web3.
+- 🌱 I’m currently learning C Programming & JavaScript.
+- 👯 I’m looking to collaborate with other Web Developers.
+- 🥅 2022 Goals: Build projects in JavaScripts.
 - ⚡ Fun fact: I love to watch Anime.
 
 ### Connect with me:

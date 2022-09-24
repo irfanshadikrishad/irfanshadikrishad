@@ -1,4 +1,4 @@
-# Hi there, I'm Irfan Shadik - aka [Zeitu][youtube] 👋 
+# Hi there, I'm [Irfan Shadik](https://www.youtube.com/channel/UCyv-8tjvvMctkIlljjw9Gfg) - aka [Zeitu][youtube] 👋 
 
 [![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCbRQiF2Zss-lCMq4Nc7kRsg?logo=youtube&logoColor=red&style=for-the-badge)][youtube]
 [![Website](https://img.shields.io/website?label=irfanshadik.live&style=for-the-badge&url=https%3A%2F%2Firfanshadik.live)](https://irfanshadik.live)

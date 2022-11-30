@@ -1,6 +1,6 @@
 # Hi there, I'm [Irfan Shadik](https://www.youtube.com/@irfanshadikrishad) - aka [Zeitu][youtube] 👋 
 
-[![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCbRQiF2Zss-lCMq4Nc7kRsg?logo=youtube&logoColor=red&style=for-the-badge)][youtube]
+[![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCyv-8tjvvMctkIlljjw9Gfg?logo=youtube&logoColor=red&style=for-the-badge)][youtube]
 [![Website](https://img.shields.io/website?label=irfanshadik.live&style=for-the-badge&url=https%3A%2F%2Firfanshadik.live)](https://irfanshadik.live)
 [![Twitter Follow](https://img.shields.io/twitter/follow/irfanshadikoffi?color=1DA1F2&logo=twitter&style=for-the-badge)](https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fgithub.com%2FcodeSTACKr&screen_name=irfanshadikoffi)
 

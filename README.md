@@ -6,9 +6,9 @@
 
 ## I'm a Student, Developer, and a Dreamer!!
 
-- 🌱 I’m currently learning C Programming & JavaScript.
+- 🌱 I’m currently learning C Programming & ReactJS.
 - 👯 I’m looking to collaborate with other Web Developers.
-- 🥅 2022 Goals: Build projects in JavaScripts.
+- 🥅 2022 Goals: Complete ReactJS & C.
 - ⚡ Fun fact: I love to watch Anime.
 
 ### Connect with me:

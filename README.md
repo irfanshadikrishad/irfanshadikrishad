@@ -1,4 +1,4 @@
-# Hi there, I'm [Irfan Shadik](https://www.youtube.com/channel/UCyv-8tjvvMctkIlljjw9Gfg) - aka [Zeitu][youtube] 👋 
+# Hi there, I'm [Irfan Shadik](https://www.youtube.com/@irfanshadikrishad) - aka [Zeitu][youtube] 👋 
 
 [![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCbRQiF2Zss-lCMq4Nc7kRsg?logo=youtube&logoColor=red&style=for-the-badge)][youtube]
 [![Website](https://img.shields.io/website?label=irfanshadik.live&style=for-the-badge&url=https%3A%2F%2Firfanshadik.live)](https://irfanshadik.live)
@@ -16,8 +16,8 @@
 [![website](./img/globe-light.svg)](https://irfanshadik.live#gh-light-mode-only)
 [![website](./img/globe-dark.svg)](https://irfanshadik.live#gh-dark-mode-only)
 &nbsp;&nbsp;
-[![website](./img/youtube-light.svg)](https://youtube.com/c/zeitu#gh-light-mode-only)
-[![website](./img/youtube-dark.svg)](https://youtube.com/c/zeitu#gh-dark-mode-only)
+[![website](./img/youtube-light.svg)](https://www.youtube.com/@irfanshadikrishad#gh-light-mode-only)
+[![website](./img/youtube-dark.svg)](https://www.youtube.com/@irfanshadikrishad#gh-dark-mode-only)
 &nbsp;&nbsp;
 [![website](./img/twitter-light.svg)](https://twitter.com/irfanshadikoffi#gh-light-mode-only)
 [![website](./img/twitter-dark.svg)](https://twitter.com/irfanshadikoffi#gh-dark-mode-only)
@@ -31,20 +31,20 @@
 ### Languages and Tools:
 
 [<img align="left" alt="Visual Studio Code" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" style="padding-right:10px;" />][webdevplaylist]
-[<img align="left" alt="Photoshop" width="26px" src="./img/ps.svg" />](https://www.youtube.com/c/zeitu)
-[<img align="left" alt="Illustrator" width="26px" src="./img/ai.svg" />](https://www.youtube.com/c/zeitu)
-[<img align="left" alt="Filmora" width="26px" src="./img/filmora.svg" />](https://www.youtube.com/c/zeitu)
+[<img align="left" alt="Photoshop" width="26px" src="./img/ps.svg" />](https://www.youtube.com/@irfanshadikrishad)
+[<img align="left" alt="Illustrator" width="26px" src="./img/ai.svg" />](https://www.youtube.com/@irfanshadikrishad)
+[<img align="left" alt="Filmora" width="26px" src="./img/filmora.svg" />](https://www.youtube.com/@irfanshadikrishad)
 [<img align="left" alt="HTML5" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" style="padding-right:10px;" />][webdevplaylist]
 [<img align="left" alt="CSS3" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" style="padding-right:10px;" />][cssplaylist]
-[<img align="left" alt="JS" width="26px" src="./img/js.svg" />](https://www.youtube.com/c/zeitu)
-[<img align="left" alt="Python" width="26px" src="./img/python.png" />](https://www.youtube.com/c/zeitu)
-[<img align="left" alt="C++" width="26px" src="./img/c++.png" />](https://www.youtube.com/c/zeitu)
-[<img align="left" alt="Bootstrap" width="26px" src="./img/boostrap.svg" />](https://www.youtube.com/c/zeitu)
+[<img align="left" alt="JS" width="26px" src="./img/js.svg" />](https://www.youtube.com/@irfanshadikrishad)
+[<img align="left" alt="Python" width="26px" src="./img/python.png" />](https://www.youtube.com/@irfanshadikrishad)
+[<img align="left" alt="C++" width="26px" src="./img/c++.png" />](https://www.youtube.com/@irfanshadikrishad)
+[<img align="left" alt="Bootstrap" width="26px" src="./img/boostrap.svg" />](https://www.youtube.com/@irfanshadikrishad)
 [<img align="left" alt="Git" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" style="padding-right:10px;" />][webdevplaylist]
-[<img align="left" alt="GitHub" width="26px" src="https://user-images.githubusercontent.com/3369400/139447912-e0f43f33-6d9f-45f8-be46-2df5bbc91289.png" style="padding-right:10px;" />](https://www.youtube.com/c/zeitu#gh-dark-mode-only)
-[<img align="left" alt="GitHub" width="26px" src="https://user-images.githubusercontent.com/3369400/139448065-39a229ba-4b06-434b-bc67-616e2ed80c8f.png" style="padding-right:10px;" />](https://www.youtube.com/c/zeitu#gh-light-mode-only)
-[<img align="left" alt="Terminal" width="26px" src="./img/terminal-light.svg" />](https://www.youtube.com/c/zeitu#gh-light-mode-only)
-[<img align="left" alt="Terminal" width="26px" src="./img/terminal-dark.svg" />](https://www.youtube.com/c/zeitu#gh-dark-mode-only)
+[<img align="left" alt="GitHub" width="26px" src="https://user-images.githubusercontent.com/3369400/139447912-e0f43f33-6d9f-45f8-be46-2df5bbc91289.png" style="padding-right:10px;" />](https://www.youtube.com/@irfanshadikrishad#gh-dark-mode-only)
+[<img align="left" alt="GitHub" width="26px" src="https://user-images.githubusercontent.com/3369400/139448065-39a229ba-4b06-434b-bc67-616e2ed80c8f.png" style="padding-right:10px;" />](https://www.youtube.com/@irfanshadikrishad#gh-light-mode-only)
+[<img align="left" alt="Terminal" width="26px" src="./img/terminal-light.svg" />](https://www.youtube.com/@irfanshadikrishad#gh-light-mode-only)
+[<img align="left" alt="Terminal" width="26px" src="./img/terminal-dark.svg" />](https://www.youtube.com/@irfanshadikrishad#gh-dark-mode-only)
 
 <br />
 <br />
@@ -67,10 +67,10 @@
 [website]: https://irfanshadik.live
 [course]: http://irfanshadik.live
 [twitter]: https://twitter.com/irfanshadikoffi
-[youtube]: https://youtube.com/c/zeitu
+[youtube]: https://www.youtube.com/@irfanshadikrishad
 [instagram]: https://instagram.com/irfanshadikofficial
 [linkedin]: https://linkedin.com/in/irfanshadikofficial
 [webdevplaylist]: https://www.youtube.com/c/zeitu
-[jsplaylist]: https://www.youtube.com/c/zeitu
-[cssplaylist]: https://www.youtube.com/c/zeitu
-[reactplaylist]: https://www.youtube.com/c/zeitu
+[jsplaylist]: https://www.youtube.com/@irfanshadikrishad
+[cssplaylist]: https://www.youtube.com/@irfanshadikrishad
+[reactplaylist]: https://www.youtube.com/@irfanshadikrishad

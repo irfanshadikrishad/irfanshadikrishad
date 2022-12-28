@@ -1,4 +1,4 @@
-# Hi there, I'm [Irfan Shadik](https://www.youtube.com/@irfanshadikrishad) - aka [Zeitu][youtube] 👋 
+# Hi there, I'm [Irfan Shadik Rishad](https://www.youtube.com/@irfanshadikrishad) - aka [Zeitu][youtube] 👋 
 
 [![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCyv-8tjvvMctkIlljjw9Gfg?logo=youtube&logoColor=red&style=for-the-badge)][youtube]
 [![Website](https://img.shields.io/website?label=irfanshadik.live&style=for-the-badge&url=https%3A%2F%2Firfanshadik.live)](https://irfanshadik.live)
@@ -6,9 +6,9 @@
 
 ## I'm a Student, Developer, and a Dreamer!!
 
-- 🌱 I’m currently learning C Programming & ReactJS.
+- 🌱 I’m currently learning DSA & ReactJS.
 - 👯 I’m looking to collaborate with other Web Developers.
-- 🥅 2022 Goals: Complete ReactJS & C.
+- 🥅 2023 Goals: Complete ReactJS & DSA.
 - ⚡ Fun fact: I love to watch Anime.
 
 ### Connect with me:

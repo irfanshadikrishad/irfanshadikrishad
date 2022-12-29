@@ -25,8 +25,8 @@
 [![website](./img/linkedin-light.svg)](https://linkedin.com/in/irfanshadikofficial#gh-light-mode-only)
 [![website](./img/linkedin-dark.svg)](https://linkedin.com/in/irfanshadikofficial#gh-dark-mode-only)
 &nbsp;&nbsp;
-[![website](./img/instagram-light.svg)](https://instagram.com/irfanshadikofficial#gh-light-mode-only)
-[![website](./img/instagram-dark.svg)](https://instagram.com/irfanshadikofficial#gh-dark-mode-only)
+[![website](./img/instagram-light.svg)](https://instagram.com/irfanshadikrishad#gh-light-mode-only)
+[![website](./img/instagram-dark.svg)](https://instagram.com/irfanshadikrishad#gh-dark-mode-only)
 
 ### Languages and Tools:
 
@@ -68,7 +68,7 @@
 [course]: http://irfanshadik.live
 [twitter]: https://twitter.com/irfanshadikoffi
 [youtube]: https://www.youtube.com/@irfanshadikrishad
-[instagram]: https://instagram.com/irfanshadikofficial
+[instagram]: https://instagram.com/irfanshadikrishad
 [linkedin]: https://linkedin.com/in/irfanshadikofficial
 [webdevplaylist]: https://www.youtube.com/c/zeitu
 [jsplaylist]: https://www.youtube.com/@irfanshadikrishad

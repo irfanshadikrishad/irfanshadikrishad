@@ -57,7 +57,7 @@
 
 </details>
   
-  
+  <br />
  
 <details>
   <summery>:zap: Profile Views</summery>

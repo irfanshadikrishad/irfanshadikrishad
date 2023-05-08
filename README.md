@@ -6,7 +6,7 @@
   </ul>
 </div>
 <b><i><p style="font-size: 1rem; margin-top: -15px">Future Software Engineer | Perfectionist</p></i></b>
-<img alt="YouTube Channel Subscribers" src="https://img.shields.io/youtube/channel/subscribers/UCyv-8tjvvMctkIlljjw9Gfg?style=for-the-badge" draggable="false"> <img alt="Website" src="https://img.shields.io/website?down_color=lightgrey&down_message=down&label=irfanshadikrishad.github.io&style=for-the-badge&up_color=green&up_message=up&url=https%3A%2F%2Firfanshadikrishad.github.io" draggable="false"> <img alt="GitHub followers" src="https://img.shields.io/github/followers/irfanshadikrishad?style=for-the-badge" draggable="false"><br>
+<a href="https://www.youtube.com/@irfanshadikrishad" target="_blank"><img alt="YouTube Channel Subscribers" src="https://img.shields.io/youtube/channel/subscribers/UCyv-8tjvvMctkIlljjw9Gfg?logoColor=%23&style=for-the-badge"></a> <a href="https://irfanshadikrishad.github.io"><img alt="Website" src="https://img.shields.io/website?down_color=lightgrey&down_message=down&label=irfanshadikrishad.github.io&style=for-the-badge&up_color=green&up_message=up&url=https%3A%2F%2Firfanshadikrishad.github.io" draggable="false"></a> <a href="https://github.com/irfanshadikrishad"><img alt="GitHub followers" src="https://img.shields.io/github/followers/irfanshadikrishad?style=for-the-badge" draggable="false"></a><br>
 <div id="user-content-toc">
   <ul>
     <summary><h3 style="display: inline-block;">— Technolgies —</h3></summary>

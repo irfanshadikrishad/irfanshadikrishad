@@ -2,11 +2,10 @@
 <img src="./images/angry_programmer.gif" style="width: 100px" draggable="false">
  <div id="user-content-toc">
   <ul>
-    <summary><h2 style="display: inline-block;">Hi, It's <a href="https://irfanshadikrishad.github.io" target="_blank">Irfan Shadik Rishad</a></h2></summary>
+    <summary><h2 style="display: inline-block;">Hi, It's <a href="https://irfanshadikrishad.github.io" target="_blank">Irfan Shadik Rishad</a></h2> <b><i><p style="font-size: 1rem; margin-top: -15px">Future Software Engineer | Perfectionist</p></i></b></summary>
   </ul>
 </div>
-<b><i><p style="font-size: 1rem; margin-top: -15px">Future Software Engineer | Perfectionist</p></i></b>
-<a href="https://www.youtube.com/@irfanshadikrishad" target="_blank"><img alt="YouTube Channel Subscribers" src="https://img.shields.io/youtube/channel/subscribers/UCyv-8tjvvMctkIlljjw9Gfg?logoColor=%23&style=for-the-badge"></a> <a href="https://irfanshadikrishad.github.io"><img alt="Website" src="https://img.shields.io/website?down_color=lightgrey&down_message=down&label=irfanshadikrishad.github.io&style=for-the-badge&up_color=green&up_message=up&url=https%3A%2F%2Firfanshadikrishad.github.io" draggable="false"></a> <a href="https://github.com/irfanshadikrishad"><img alt="GitHub followers" src="https://img.shields.io/github/followers/irfanshadikrishad?style=for-the-badge" draggable="false"></a><br>
+<a href="https://www.youtube.com/@irfanshadikrishad" target="_blank"><img alt="YouTube Channel Subscribers" src="https://img.shields.io/youtube/channel/subscribers/UCyv-8tjvvMctkIlljjw9Gfg?logoColor=%23&style=for-the-badge"></a> <a href="https://irfanshadikrishad.github.io" target="_blank"><img alt="Website" src="https://img.shields.io/website?down_color=lightgrey&down_message=down&label=irfanshadikrishad.github.io&style=for-the-badge&up_color=green&up_message=up&url=https%3A%2F%2Firfanshadikrishad.github.io" draggable="false"></a> <a href="https://github.com/irfanshadikrishad" target="_blank"><img alt="GitHub followers" src="https://img.shields.io/github/followers/irfanshadikrishad?style=for-the-badge" draggable="false"></a><br>
 <div id="user-content-toc">
   <ul>
     <summary><h3 style="display: inline-block;">— Technolgies —</h3></summary>

@@ -1,4 +1,4 @@
-<center>
+<div style="text-align: center">
 <img src="./images/angry_programmer.gif" style="width: 100px" draggable="false">
 <h2> Hi, It's <a href="https://irfanshadikrishad.github.io">Irfan Shadik Rishad</a></h2>
 <b><i><p style="font-size: 1rem; margin-top: -15px">Future Software Engineer | Perfectionist</p></i></b>
@@ -7,4 +7,4 @@
 <img src="https://streak-stats.demolab.com/?user=irfanshadikrishad&theme=transparent&hide_border=true" draggable="false">
 
 <p style="color: #4169e1">Thanks for visiting (●'◡'●)</p>
-</center>
+</div>

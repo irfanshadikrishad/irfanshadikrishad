@@ -11,17 +11,17 @@
     <summary><h3 style="display: inline-block;">— Technolgies —</h3></summary>
   </ul>
 </div>
-<img src="./images/sass.png" width="30" draggable="false">
-<img src="./images/js.png" width="30" draggable="false">
-<img src="./images/jquery.png" width="30" draggable="false">
-<img src="./images/express.png" width="30" draggable="false">
-<img src="./images/react.png" width="30" draggable="false">
-<img src="./images/node.png" width="30" draggable="false">
-<img src="./images/python.png" width="30" draggable="false">
-<img src="./images/c.png" width="30" draggable="false">
-<img src="./images/cpp.png" width="30" draggable="false">
-<img src="./images/git.png" width="30" draggable="false">
-<img src="./images/hyper.png" width="30" draggable="false">
+<a href="https://www.sass-lang.com" target="_blank"><img src="./images/sass.png" width="30" draggable="false"></a>
+<a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank"><img src="./images/js.png" width="30" draggable="false"></a>
+<a href="https://www.jquery.com" target="_blank"><img src="./images/jquery.png" width="30" draggable="false"></a>
+<a href="https://react.dev" target="_blank"><img src="./images/react.png" width="30" draggable="false"></a>
+<a href="https://expressjs.com" target="_blank"><img src="./images/express.png" width="30" draggable="false"></a>
+<a href="https://nodejs.org" target="_blank"><img src="./images/node.png" width="30" draggable="false"></a>
+<a href="https://python.org" target="_blank"><img src="./images/python.png" width="30" draggable="false"></a>
+<a href="https://en.wikipedia.org/wiki/C_(programming_language)" target="_blank"><img src="./images/c.png" width="30" draggable="false"></a>
+<a href="https://en.wikipedia.org/wiki/C%2B%2B" target="_blank"><img src="./images/cpp.png" width="30" draggable="false"></a>
+<a href="https://git-scm.com" target="_blank"><img src="./images/git.png" width="30" draggable="false"></a>
+<a href="https://hyper.is" target="_blank"><img src="./images/hyper.png" width="30" draggable="false"></a>
 <br>
 <img src="https://streak-stats.demolab.com/?user=irfanshadikrishad&theme=transparent&hide_border=true" draggable="false" >
 

@@ -16,7 +16,9 @@
 <a href="https://www.jquery.com" target="_blank"><img src="./images/jquery.png" width="30" draggable="false"></a>
 <a href="https://react.dev" target="_blank"><img src="./images/react.png" width="30" draggable="false"></a>
 <a href="https://expressjs.com" target="_blank"><img src="./images/express.png" width="30" draggable="false"></a>
+<a href="https://mongoosejs.com" target="_blank"><img src="./images/mongoose.png" width="30" draggable="false"></a>
 <a href="https://nodejs.org" target="_blank"><img src="./images/node.png" width="30" draggable="false"></a>
+<a href="https://mongodb.com" target="_blank"><img src="./images/mongodb.png" width="30" draggable="false"></a>
 <a href="https://python.org" target="_blank"><img src="./images/python.png" width="30" draggable="false"></a>
 <a href="https://en.wikipedia.org/wiki/C_(programming_language)" target="_blank"><img src="./images/c.png" width="30" draggable="false"></a>
 <a href="https://en.wikipedia.org/wiki/C%2B%2B" target="_blank"><img src="./images/cpp.png" width="30" draggable="false"></a>

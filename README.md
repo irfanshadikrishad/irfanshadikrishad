@@ -11,20 +11,20 @@
     <summary><h3 style="display: inline-block;"><a href="https://www.youtube.com/shorts/IL9rjdx0xuo"><i>✧ TECHNOLOGIES ✧</i></a></h3></summary>
   </ul>
 </div>
-<a href="https://www.sass-lang.com" target="_blank"><img src="./images/sass.png" width="30" draggable="false"></a>
-<a href="https://en.wikipedia.org/wiki/javascript" target="_blank"><img src="./images/js.png" width="30" draggable="false"></a>
-<a href="https://www.jquery.com" target="_blank"><img src="./images/jquery.png" width="30" draggable="false"></a>
-<a href="https://react.dev" target="_blank"><img src="./images/react.png" width="30" draggable="false"></a>
-<a href="https://expressjs.com" target="_blank"><img src="./images/express.png" width="30" draggable="false"></a>
-<a href="https://mongoosejs.com" target="_blank"><img src="./images/mongoose.png" width="30" draggable="false"></a>
-<a href="https://nodejs.org" target="_blank"><img src="./images/node.png" width="30" draggable="false"></a>
-<a href="https://mongodb.com" target="_blank"><img src="./images/mongodb.png" width="30" draggable="false"></a>
-<a href="https://python.org" target="_blank"><img src="./images/python.png" width="30" draggable="false"></a>
-<a href="https://en.wikipedia.org/wiki/c_(programming_language)" target="_blank"><img src="./images/c.png" width="30" draggable="false"></a>
-<a href="https://en.wikipedia.org/wiki/c%2b%2b" target="_blank"><img src="./images/cpp.png" width="30" draggable="false"></a>
-<a href="https://git-scm.com" target="_blank"><img src="./images/git.png" width="30" draggable="false"></a>
-<a href="https://neovim.io" target="_blank"><img src="./images/neovim.png" width="30" draggable="false"></a>
-<a href="https://en.wikipedia.org/wiki/linux" target="_blank"><img src="./images/linux.png" width="30" draggable="false"></a>
+<a href="https://www.sass-lang.com" target="_blank"><img src="./images/sass.png" width="30" height="27.27" draggable="false"></a>
+<a href="https://en.wikipedia.org/wiki/javascript" target="_blank"><img src="./images/js.png" width="30" height="27.27" draggable="false"></a>
+<a href="https://www.jquery.com" target="_blank"><img src="./images/jquery.png" width="30" height="27.27" draggable="false"></a>
+<a href="https://react.dev" target="_blank"><img src="./images/react.png" width="30" height="27.27" draggable="false"></a>
+<a href="https://expressjs.com" target="_blank"><img src="./images/express.png" width="30" height="27.27" draggable="false"></a>
+<a href="https://mongoosejs.com" target="_blank"><img src="./images/mongoose.png" width="30" height="27.27" draggable="false"></a>
+<a href="https://nodejs.org" target="_blank"><img src="./images/node.png" width="30" height="27.27" draggable="false"></a>
+<a href="https://mongodb.com" target="_blank"><img src="./images/mongodb.png" width="30" height="27.27" draggable="false"></a>
+<a href="https://python.org" target="_blank"><img src="./images/python.png" width="30" height="27.27" draggable="false"></a>
+<a href="https://en.wikipedia.org/wiki/c_(programming_language)" target="_blank"><img src="./images/c.png" width="30" height="27.27" draggable="false"></a>
+<a href="https://en.wikipedia.org/wiki/c%2b%2b" target="_blank"><img src="./images/cpp.png" width="30" height="27.27" draggable="false"></a>
+<a href="https://git-scm.com" target="_blank"><img src="./images/git.png" width="30" height="27.27 "raggable="false"></a>
+<a href="https://neovim.io" target="_blank"><img src="./images/neovim.png" width="30" height="27.27" draggable="false"></a>
+<a href="https://en.wikipedia.org/wiki/linux" target="_blank"><img src="./images/linux.png" width="30" height="27.27" draggable="false"></a>
 <br>
 <img src="https://streak-stats.demolab.com/?user=irfanshadikrishad&theme=transparent&hide_border=true" draggable="false" >
 

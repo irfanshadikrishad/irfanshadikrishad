@@ -11,9 +11,9 @@
     <summary><h3 style="display: inline-block;"><a href="https://irfanshadikrishad.dev"><i>✧ TECHNOLOGIES ✧</i></a></h3></summary>
   </ul>
 </div>
-<a href="https://www.sass-lang.com" target="_blank"><img src="./images/sass.png" width="30" height="27.27" draggable="false"></a>
-<a href="https://en.wikipedia.org/wiki/javascript" target="_blank"><img src="./images/js.png" width="30" height="27.27" draggable="false"></a>
-<a href="https://www.typescriptlang.org" target="_blank"><img src="./images/ts.png" width="30" height="27.27" draggable="false"></a>
+<a href="https://www.sass-lang.com" target="_blank"><img alt="Sass" src="./images/sass.png" width="30" height="30" draggable="false"></a>&nbsp;
+<a href="https://en.wikipedia.org/wiki/javascript" target="_blank"><img alt="JavaScript" src="./images/js.png" width="30" height="30" draggable="false"></a>&nbsp;
+<a href="https://www.typescriptlang.org" target="_blank"><img alt="TypeScript" src="./images/ts.png" width="30" height="30" draggable="false"></a>
 <br>
 <img src="https://streak-stats.demolab.com/?user=irfanshadikrishad&theme=transparent&hide_border=true" draggable="false" >
 

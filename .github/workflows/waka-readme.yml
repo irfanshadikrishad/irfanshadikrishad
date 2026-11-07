@@ -1,0 +1,23 @@
+name: Waka Readme
+on:
+  workflow_dispatch:
+  schedule:
+    # runs at 12 AM Asia/Dhaka
+    - cron: 0 18 * * *
+jobs:
+  update-readme:
+    name: WakaReadme DevMetrics
+    runs-on: ubuntu-latest
+    steps:
+      - uses: athul/waka-readme@master
+        with:
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          TIME_RANGE: all_time
+          SHOW_TITLE: false
+          BLOCKS: ⣀⣄⣤⣦⣶⣷⣿
+          LANG_COUNT: 5
+          COMMIT_MESSAGE: 'chore: updated graph w/ new metrics'
+          COMMITTER_NAME: Irfan Shadik Rishad
+          COMMITTER_EMAIL: 77362427+irfanshadikrishad@users.noreply.github.com
+          AUTHOR_NAME: Irfan Shadik Rishad
+          AUTHOR_EMAIL: 77362427+irfanshadikrishad@users.noreply.github.com

@@ -2,8 +2,7 @@ name: Waka Readme
 on:
   workflow_dispatch:
   schedule:
-    # runs at 12 AM Asia/Dhaka
-    - cron: 0 18 * * *
+    - cron: 0 0 * * *
 permissions:
   contents: write
 concurrency:

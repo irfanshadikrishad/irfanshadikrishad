@@ -4,6 +4,11 @@ on:
   schedule:
     # runs at 12 AM Asia/Dhaka
     - cron: 0 18 * * *
+permissions:
+  contents: write
+concurrency:
+  group: waka-readme
+  cancel-in-progress: true
 jobs:
   update-readme:
     name: WakaReadme DevMetrics

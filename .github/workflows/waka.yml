@@ -18,8 +18,8 @@ jobs:
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
           TIME_RANGE: all_time
           SHOW_TITLE: false
-          BLOCKS: ░▒▓█
-          LANG_COUNT: 5
+          BLOCKS: █░
+          LANG_COUNT: 10
           COMMIT_MESSAGE: 'chore: updated graph w/ new metrics'
           COMMITTER_NAME: Irfan Shadik Rishad
           COMMITTER_EMAIL: 77362427+irfanshadikrishad@users.noreply.github.com

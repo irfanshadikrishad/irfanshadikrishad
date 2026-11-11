@@ -2,7 +2,7 @@ name: Waka Readme
 on:
   workflow_dispatch:
   schedule:
-    - cron: 0 0 * * *
+    - cron: 0 18 * * *
 permissions:
   contents: write
 concurrency:
@@ -20,6 +20,7 @@ jobs:
           SHOW_TITLE: false
           BLOCKS: ░█
           LANG_COUNT: 10
+          IGNORED_LANGUAGES: Other
           COMMIT_MESSAGE: 'chore: updated graph w/ new metrics'
           COMMITTER_NAME: Irfan Shadik Rishad
           COMMITTER_EMAIL: 77362427+irfanshadikrishad@users.noreply.github.com

@@ -2,7 +2,7 @@ name: Waka Readme
 on:
   workflow_dispatch:
   schedule:
-    - cron: 0 18 * * *
+    - cron: 0 19 * * *
 permissions:
   contents: write
 concurrency:

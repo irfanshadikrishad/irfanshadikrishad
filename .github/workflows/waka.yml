@@ -19,7 +19,7 @@ jobs:
           TIME_RANGE: all_time
           SHOW_TITLE: false
           BLOCKS: ░█
-          LANG_COUNT: 10
+          LANG_COUNT: 11
           IGNORED_LANGUAGES: Other
           COMMIT_MESSAGE: 'chore: updated graph w/ new metrics'
           COMMITTER_NAME: Irfan Shadik Rishad

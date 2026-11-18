@@ -555,6 +555,28 @@ FORCE=1 ~/.local/bin/wakapi-readme.sh
 
 ---
 
+#### Backups
+
+```sh
+#!/usr/bin/env bash
+# ~/.local/bin/wakapi-backup.sh  (chmod 700)
+set -Eeuo pipefail
+umask 077
+DEST="${WAKAPI_BACKUP_DIR:-$HOME/workshop/irfanshadikrishad/backups/}"
+KEEP=14
+mkdir -p "$DEST"
+
+docker stop wakapi >/dev/null
+trap 'docker start wakapi >/dev/null' EXIT
+
+docker run --rm -v wakapi-data:/data:ro -v "$DEST":/backup alpine \
+  tar czf "/backup/wakapi-data-$(date +%F).tgz" -C /data .
+
+ls -1t "$DEST"/wakapi-data-*.tgz | tail -n +$((KEEP + 1)) | xargs -r rm --
+```
+
+---
+
 #### Maintenance
 
 **Update Wakapi** (your data lives in the `wakapi-data` volume and is kept):

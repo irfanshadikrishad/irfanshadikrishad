@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # Updates a README block with Wakapi language stats and pushes it to GitHub.
 #
-# Designed to run hourly from cron (plus once at boot):
+# Runs directly inside the git working copy that contains this script.
 #   - at most ONE successful commit per local calendar day
 #   - pushes only when the generated stats differ from the last pushed ones
 #   - failures never use up the daily quota, so the next run simply retries
+#   - only README_FILE and the newest backup archive are ever committed
 set -Eeuo pipefail
 umask 077
 
-# CHANGED: resolve the script's own directory so cron's cwd doesn't matter
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 
 CONFIG_FILE="${WAKAPI_README_CONFIG:-$HOME/.config/wakapi-readme/config.env}"
@@ -18,15 +18,38 @@ DATE_FILE="$STATE_DIR/last_push_date"
 START_MARK='<!--WAKAPI:START-->'
 END_MARK='<!--WAKAPI:END-->'
 
+TMP=""
+REPO_DIR=""
+README_FILE=""
+BACKUP_REPO_DIR=""
+ROLLBACK=0
+COMMITTED=0
+BACKUP_REL=""
+
 log() { printf '%s [wakapi-readme] %s\n' "$(date -u +%FT%TZ)" "$*" >&2; }
 die() {
   log "ERROR: $*"
   exit 1
 }
 
+# On any failure after the working tree was touched, restore it to a clean state.
+cleanup() {
+  local rc=$?
+  if ((rc != 0 && ROLLBACK == 1)) && [[ -n "$REPO_DIR" ]]; then
+    log "rolling back local changes"
+    if ((COMMITTED == 1)); then
+      git -C "$REPO_DIR" reset -q --soft HEAD~1 || true
+    fi
+    git -C "$REPO_DIR" reset -q -- "$README_FILE" "$BACKUP_REPO_DIR" 2>/dev/null || true
+    git -C "$REPO_DIR" checkout -q -- "$README_FILE" 2>/dev/null || true
+  fi
+  [[ -n "$TMP" && -d "$TMP" ]] && rm -rf "$TMP"
+  return "$rc"
+}
+trap cleanup EXIT
+
 # ---------- dependencies ----------
-# CHANGED: added find, sort, head, cut, cp, tar
-for bin in curl jq git awk flock base64 mktemp sha256sum cmp find sort head cut cp tar; do
+for bin in curl jq git awk flock base64 mktemp sha256sum cmp find sort head cut tar basename; do
   command -v "$bin" >/dev/null 2>&1 || die "missing dependency: $bin"
 done
 
@@ -39,8 +62,10 @@ source "$CONFIG_FILE"
 
 : "${WAKAPI_URL:=http://127.0.0.1:1111}"
 : "${WAKAPI_API_KEY:?WAKAPI_API_KEY is required}"
-: "${README_REPO:?README_REPO is required, e.g. git@github-wakapi:user/user.git}"
-: "${README_BRANCH:=main}"
+: "${WAKAPI_REPO_DIR:=$SCRIPT_DIR}"
+: "${README_REPO:=}" # optional: URL/host-alias used for fetch+push instead of the remote
+: "${README_REMOTE:=origin}"
+: "${README_BRANCH:=}" # default: currently checked-out branch
 : "${README_FILE:=README.md}"
 : "${STATS_RANGE:=last_7_days}"
 : "${TOP_N:=5}"
@@ -54,11 +79,9 @@ source "$CONFIG_FILE"
 : "${GIT_AUTHOR_NAME_CFG:=wakapi-readme-bot}"
 : "${GIT_AUTHOR_EMAIL_CFG:?GIT_AUTHOR_EMAIL_CFG is required}"
 : "${FORCE:=0}"
-# CHANGED: backup settings (all overridable from config.env)
 : "${BACKUP_SCRIPT:=$SCRIPT_DIR/wakapi-backup.sh}"
-: "${BACKUP_SRC_DIR:=$SCRIPT_DIR/backups}"
-: "${BACKUP_REPO_DIR:=backups}"
-: "${BACKUP_KEEP:=0}" # 0 = keep everything; N = keep newest N archives in the repo
+: "${BACKUP_REPO_DIR:=backups}" # relative to the repo root
+: "${BACKUP_FORCE_ADD:=0}"      # 1 = git add -f (bypass .gitignore) for the archive
 
 case "$STATS_RANGE" in
 today | yesterday | week | month | year | 7_days | last_7_days | 30_days | last_30_days | 6_months | last_6_months | 12_months | last_12_months | last_year | all_time) ;;
@@ -73,13 +96,24 @@ esac
 [[ "$WAIT_FOR_WAKAPI" =~ ^[0-9]+$ && "$WAIT_FOR_WAKAPI" -le 600 ]] || die "WAIT_FOR_WAKAPI must be 0-600"
 [[ "$NET_RETRIES" =~ ^[0-9]+$ && "$NET_RETRIES" -ge 1 && "$NET_RETRIES" -le 10 ]] || die "NET_RETRIES must be 1-10"
 [[ "$NET_RETRY_DELAY" =~ ^[0-9]+$ && "$NET_RETRY_DELAY" -ge 1 && "$NET_RETRY_DELAY" -le 120 ]] || die "NET_RETRY_DELAY must be 1-120"
-[[ "$README_BRANCH" =~ ^[A-Za-z0-9._/-]+$ ]] || die "invalid README_BRANCH"
 [[ "$README_FILE" != /* && "$README_FILE" != *..* ]] || die "invalid README_FILE"
-# CHANGED: validate backup settings
-[[ "$BACKUP_KEEP" =~ ^[0-9]+$ && "$BACKUP_KEEP" -le 3650 ]] || die "BACKUP_KEEP must be 0-3650"
+[[ "$BACKUP_FORCE_ADD" == "0" || "$BACKUP_FORCE_ADD" == "1" ]] || die "BACKUP_FORCE_ADD must be 0 or 1"
 [[ "$BACKUP_REPO_DIR" =~ ^[A-Za-z0-9._-]+(/[A-Za-z0-9._-]+)*$ && "$BACKUP_REPO_DIR" != *..* ]] ||
   die "invalid BACKUP_REPO_DIR (must be a relative path inside the repo)"
 [[ -x "$BACKUP_SCRIPT" ]] || die "backup script not found or not executable: $BACKUP_SCRIPT"
+
+# ---------- resolve the working copy ----------
+REPO_DIR="$(git -C "$WAKAPI_REPO_DIR" rev-parse --show-toplevel 2>/dev/null)" ||
+  die "not a git repository: $WAKAPI_REPO_DIR"
+CURRENT_BRANCH="$(git -C "$REPO_DIR" symbolic-ref --short -q HEAD)" ||
+  die "detached HEAD in $REPO_DIR; check out a branch"
+: "${README_BRANCH:=$CURRENT_BRANCH}"
+[[ "$README_BRANCH" =~ ^[A-Za-z0-9._/-]+$ ]] || die "invalid README_BRANCH"
+[[ "$README_BRANCH" == "$CURRENT_BRANCH" ]] ||
+  die "checked-out branch is '$CURRENT_BRANCH' but README_BRANCH is '$README_BRANCH'"
+SYNC_TARGET="${README_REPO:-$README_REMOTE}"
+TARGET="$REPO_DIR/$README_FILE"
+BACKUP_ABS="$REPO_DIR/$BACKUP_REPO_DIR"
 
 # ---------- helpers ----------
 # retry <command...>: run a command up to NET_RETRIES times (network hiccups after boot/resume)
@@ -111,38 +145,22 @@ wait_for_wakapi() {
   done
 }
 
-# CHANGED: run the backup script, then copy its newest archive into the repo clone
-# stage_backup <repo_dir>
-stage_backup() {
-  local repo="$1" latest dest_dir
-  dest_dir="$repo/$BACKUP_REPO_DIR"
-
-  # Run from the script's dir so relative paths inside the backup script behave the same under cron
+# run_backup: run the backup script, locate + verify the newest archive, set BACKUP_REL
+run_backup() {
+  local latest
   (cd "$SCRIPT_DIR" && "$BACKUP_SCRIPT") || return 1
 
-  latest="$(find "$BACKUP_SRC_DIR" -maxdepth 1 -type f -name 'wakapi-data-*.tgz' \
+  latest="$(find "$BACKUP_ABS" -maxdepth 1 -type f -name 'wakapi-data-*.tgz' \
     -printf '%T@ %p\n' 2>/dev/null | sort -nr | head -n1 | cut -d' ' -f2-)"
   [[ -n "$latest" && -f "$latest" ]] || {
-    log "no wakapi-data-*.tgz found in $BACKUP_SRC_DIR"
+    log "no wakapi-data-*.tgz found in $BACKUP_ABS"
     return 1
   }
-  # Refuse to publish a corrupt archive
   tar -tzf "$latest" >/dev/null 2>&1 || {
     log "backup archive failed integrity check: $latest"
     return 1
   }
-
-  mkdir -p "$dest_dir"
-  cp -f -- "$latest" "$dest_dir/$(basename -- "$latest")"
-
-  # Optional retention: keep only the newest BACKUP_KEEP archives inside the repo
-  if ((BACKUP_KEEP > 0)); then
-    local old
-    while IFS= read -r old; do
-      [[ -n "$old" ]] && rm -f -- "$old"
-    done < <(find "$dest_dir" -maxdepth 1 -type f -name 'wakapi-data-*.tgz' -printf '%T@ %p\n' |
-      sort -nr | tail -n +"$((BACKUP_KEEP + 1))" | cut -d' ' -f2-)
-  fi
+  BACKUP_REL="$BACKUP_REPO_DIR/$(basename -- "$latest")"
 }
 
 # ---------- single instance ----------
@@ -167,7 +185,6 @@ if [[ "$FORCE" != "1" && "$LAST_PUSH_DATE" == "$TODAY" ]]; then
 fi
 
 TMP="$(mktemp -d)"
-trap 'rm -rf "$TMP"' EXIT
 
 # ---------- wait for Wakapi (useful right after boot) ----------
 if ((WAIT_FOR_WAKAPI > 0)); then
@@ -240,17 +257,18 @@ if [[ "$FORCE" != "1" && "$NEW_HASH" == "$OLD_HASH" ]]; then
 fi
 log "stats changed (or forced), updating README"
 
-# ---------- sync repo ----------
-REPO_DIR="$STATE_DIR/repo"
+# ---------- sync working copy (never destructive) ----------
 export GIT_TERMINAL_PROMPT=0
-if [[ ! -d "$REPO_DIR/.git" ]]; then
-  retry git clone --quiet --depth 1 --branch "$README_BRANCH" "$README_REPO" "$REPO_DIR" ||
-    die "git clone failed"
-fi
-retry git -C "$REPO_DIR" fetch --quiet --depth 1 origin "$README_BRANCH" || die "git fetch failed"
-git -C "$REPO_DIR" reset --quiet --hard "origin/$README_BRANCH"
 
-TARGET="$REPO_DIR/$README_FILE"
+git -C "$REPO_DIR" ls-files --error-unmatch -- "$README_FILE" >/dev/null 2>&1 ||
+  die "$README_FILE is not tracked in $REPO_DIR"
+git -C "$REPO_DIR" diff --quiet HEAD -- "$README_FILE" ||
+  die "$README_FILE has uncommitted changes; commit or stash them first"
+
+retry git -C "$REPO_DIR" fetch --quiet "$SYNC_TARGET" "$README_BRANCH" || die "git fetch failed"
+git -C "$REPO_DIR" merge --ff-only --quiet FETCH_HEAD ||
+  die "cannot fast-forward '$README_BRANCH' (diverged or conflicting local files); resolve manually"
+
 [[ -f "$TARGET" ]] || die "$README_FILE not found in repo"
 grep -qxF "$START_MARK" "$TARGET" && grep -qxF "$END_MARK" "$TARGET" ||
   die "markers $START_MARK / $END_MARK not found in $README_FILE"
@@ -264,31 +282,47 @@ awk -v s="$START_MARK" -v e="$END_MARK" -v bf="$TMP/block.md" '
 
 [[ -s "$TMP/README.new" ]] || die "generated README is empty, aborting"
 
-# README on GitHub already has this exact block: record it, but no commit
-# happens, so today's daily quota is NOT used.
+# README already has this exact block: record it, but no commit happens,
+# so today's daily quota is NOT used.
 if cmp -s "$TMP/README.new" "$TARGET"; then
   write_state "$HASH_FILE" "$NEW_HASH"
   log "README already up to date, nothing to commit"
   exit 0
 fi
 
-# CHANGED: backup now runs via an absolute path and lands inside the clone that gets committed
-stage_backup "$REPO_DIR" || die "backup failed"
+# ---------- backup + stage + commit + push ----------
+run_backup || die "backup failed"
 
+ROLLBACK=1
 cat "$TMP/README.new" >"$TARGET"
-# CHANGED: stage the README and the backup dir, and warn if the backup was not staged (e.g. .gitignore)
 git -C "$REPO_DIR" add -- "$README_FILE"
-git -C "$REPO_DIR" add -A -- "$BACKUP_REPO_DIR" ||
-  log "WARNING: could not stage $BACKUP_REPO_DIR (ignored by .gitignore?)"
-if git -C "$REPO_DIR" diff --cached --quiet -- "$BACKUP_REPO_DIR"; then
-  log "WARNING: no backup changes staged in $BACKUP_REPO_DIR (check .gitignore for *.tgz or backups/)"
+COMMIT_PATHS=("$README_FILE")
+
+if git -C "$REPO_DIR" check-ignore -q -- "$BACKUP_REL"; then
+  if [[ "$BACKUP_FORCE_ADD" == "1" ]]; then
+    git -C "$REPO_DIR" add -f -- "$BACKUP_REL"
+  else
+    log "WARNING: $BACKUP_REL is ignored by .gitignore, so it will NOT be committed."
+    log "         Fix the rule (see: git check-ignore -v $BACKUP_REL) or set BACKUP_FORCE_ADD=1"
+  fi
+else
+  git -C "$REPO_DIR" add -- "$BACKUP_REL"
 fi
+
+if [[ -n "$(git -C "$REPO_DIR" ls-files -- "$BACKUP_REL")" ]]; then
+  COMMIT_PATHS+=("$BACKUP_REL")
+fi
+
+# Explicit pathspec: only these files are committed, whatever else is staged in the repo.
 git -C "$REPO_DIR" \
   -c user.name="$GIT_AUTHOR_NAME_CFG" -c user.email="$GIT_AUTHOR_EMAIL_CFG" \
-  commit --quiet -m "chore: update coding stats ($TODAY)"
-retry git -C "$REPO_DIR" push --quiet origin "HEAD:$README_BRANCH" || die "git push failed"
+  commit --quiet -m "chore: update coding stats ($TODAY)" -- "${COMMIT_PATHS[@]}"
+COMMITTED=1
+
+retry git -C "$REPO_DIR" push --quiet "$SYNC_TARGET" "HEAD:$README_BRANCH" || die "git push failed"
+ROLLBACK=0
 
 # State is saved ONLY after a successful push, so any failure above retries next run.
 write_state "$HASH_FILE" "$NEW_HASH"
 write_state "$DATE_FILE" "$TODAY"
-log "README updated and pushed (daily push done for $TODAY)"
+log "README updated and pushed (daily push done for $TODAY; committed: ${COMMIT_PATHS[*]})"

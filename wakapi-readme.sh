@@ -8,6 +8,9 @@
 set -Eeuo pipefail
 umask 077
 
+# CHANGED: resolve the script's own directory so cron's cwd doesn't matter
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+
 CONFIG_FILE="${WAKAPI_README_CONFIG:-$HOME/.config/wakapi-readme/config.env}"
 STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/wakapi-readme"
 HASH_FILE="$STATE_DIR/last_hash"
@@ -22,7 +25,8 @@ die() {
 }
 
 # ---------- dependencies ----------
-for bin in curl jq git awk flock base64 mktemp sha256sum cmp; do
+# CHANGED: added find, sort, head, cut, cp, tar
+for bin in curl jq git awk flock base64 mktemp sha256sum cmp find sort head cut cp tar; do
   command -v "$bin" >/dev/null 2>&1 || die "missing dependency: $bin"
 done
 
@@ -50,6 +54,11 @@ source "$CONFIG_FILE"
 : "${GIT_AUTHOR_NAME_CFG:=wakapi-readme-bot}"
 : "${GIT_AUTHOR_EMAIL_CFG:?GIT_AUTHOR_EMAIL_CFG is required}"
 : "${FORCE:=0}"
+# CHANGED: backup settings (all overridable from config.env)
+: "${BACKUP_SCRIPT:=$SCRIPT_DIR/wakapi-backup.sh}"
+: "${BACKUP_SRC_DIR:=$SCRIPT_DIR/backups}"
+: "${BACKUP_REPO_DIR:=backups}"
+: "${BACKUP_KEEP:=0}" # 0 = keep everything; N = keep newest N archives in the repo
 
 case "$STATS_RANGE" in
 today | yesterday | week | month | year | 7_days | last_7_days | 30_days | last_30_days | 6_months | last_6_months | 12_months | last_12_months | last_year | all_time) ;;
@@ -66,6 +75,11 @@ esac
 [[ "$NET_RETRY_DELAY" =~ ^[0-9]+$ && "$NET_RETRY_DELAY" -ge 1 && "$NET_RETRY_DELAY" -le 120 ]] || die "NET_RETRY_DELAY must be 1-120"
 [[ "$README_BRANCH" =~ ^[A-Za-z0-9._/-]+$ ]] || die "invalid README_BRANCH"
 [[ "$README_FILE" != /* && "$README_FILE" != *..* ]] || die "invalid README_FILE"
+# CHANGED: validate backup settings
+[[ "$BACKUP_KEEP" =~ ^[0-9]+$ && "$BACKUP_KEEP" -le 3650 ]] || die "BACKUP_KEEP must be 0-3650"
+[[ "$BACKUP_REPO_DIR" =~ ^[A-Za-z0-9._-]+(/[A-Za-z0-9._-]+)*$ && "$BACKUP_REPO_DIR" != *..* ]] ||
+  die "invalid BACKUP_REPO_DIR (must be a relative path inside the repo)"
+[[ -x "$BACKUP_SCRIPT" ]] || die "backup script not found or not executable: $BACKUP_SCRIPT"
 
 # ---------- helpers ----------
 # retry <command...>: run a command up to NET_RETRIES times (network hiccups after boot/resume)
@@ -95,6 +109,40 @@ wait_for_wakapi() {
     fi
     sleep 5
   done
+}
+
+# CHANGED: run the backup script, then copy its newest archive into the repo clone
+# stage_backup <repo_dir>
+stage_backup() {
+  local repo="$1" latest dest_dir
+  dest_dir="$repo/$BACKUP_REPO_DIR"
+
+  # Run from the script's dir so relative paths inside the backup script behave the same under cron
+  (cd "$SCRIPT_DIR" && "$BACKUP_SCRIPT") || return 1
+
+  latest="$(find "$BACKUP_SRC_DIR" -maxdepth 1 -type f -name 'wakapi-data-*.tgz' \
+    -printf '%T@ %p\n' 2>/dev/null | sort -nr | head -n1 | cut -d' ' -f2-)"
+  [[ -n "$latest" && -f "$latest" ]] || {
+    log "no wakapi-data-*.tgz found in $BACKUP_SRC_DIR"
+    return 1
+  }
+  # Refuse to publish a corrupt archive
+  tar -tzf "$latest" >/dev/null 2>&1 || {
+    log "backup archive failed integrity check: $latest"
+    return 1
+  }
+
+  mkdir -p "$dest_dir"
+  cp -f -- "$latest" "$dest_dir/$(basename -- "$latest")"
+
+  # Optional retention: keep only the newest BACKUP_KEEP archives inside the repo
+  if ((BACKUP_KEEP > 0)); then
+    local old
+    while IFS= read -r old; do
+      [[ -n "$old" ]] && rm -f -- "$old"
+    done < <(find "$dest_dir" -maxdepth 1 -type f -name 'wakapi-data-*.tgz' -printf '%T@ %p\n' |
+      sort -nr | tail -n +"$((BACKUP_KEEP + 1))" | cut -d' ' -f2-)
+  fi
 }
 
 # ---------- single instance ----------
@@ -224,10 +272,17 @@ if cmp -s "$TMP/README.new" "$TARGET"; then
   exit 0
 fi
 
-./wakapi-backup.sh
+# CHANGED: backup now runs via an absolute path and lands inside the clone that gets committed
+stage_backup "$REPO_DIR" || die "backup failed"
 
 cat "$TMP/README.new" >"$TARGET"
-git -C "$REPO_DIR" add -- "$README_FILE" backups/
+# CHANGED: stage the README and the backup dir, and warn if the backup was not staged (e.g. .gitignore)
+git -C "$REPO_DIR" add -- "$README_FILE"
+git -C "$REPO_DIR" add -A -- "$BACKUP_REPO_DIR" ||
+  log "WARNING: could not stage $BACKUP_REPO_DIR (ignored by .gitignore?)"
+if git -C "$REPO_DIR" diff --cached --quiet -- "$BACKUP_REPO_DIR"; then
+  log "WARNING: no backup changes staged in $BACKUP_REPO_DIR (check .gitignore for *.tgz or backups/)"
+fi
 git -C "$REPO_DIR" \
   -c user.name="$GIT_AUTHOR_NAME_CFG" -c user.email="$GIT_AUTHOR_EMAIL_CFG" \
   commit --quiet -m "chore: update coding stats ($TODAY)"

@@ -224,8 +224,10 @@ if cmp -s "$TMP/README.new" "$TARGET"; then
   exit 0
 fi
 
+./wakapi-backup.sh
+
 cat "$TMP/README.new" >"$TARGET"
-git -C "$REPO_DIR" add -- "$README_FILE"
+git -C "$REPO_DIR" add -- "$README_FILE" backups/
 git -C "$REPO_DIR" \
   -c user.name="$GIT_AUTHOR_NAME_CFG" -c user.email="$GIT_AUTHOR_EMAIL_CFG" \
   commit --quiet -m "chore: update coding stats ($TODAY)"

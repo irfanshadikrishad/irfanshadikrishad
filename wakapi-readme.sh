@@ -325,4 +325,5 @@ ROLLBACK=0
 # State is saved ONLY after a successful push, so any failure above retries next run.
 write_state "$HASH_FILE" "$NEW_HASH"
 write_state "$DATE_FILE" "$TODAY"
+git pull
 log "README updated and pushed (daily push done for $TODAY; committed: ${COMMIT_PATHS[*]})"
